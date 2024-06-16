@@ -11,14 +11,8 @@ function getTime() {
     
     const mins = date.getMinutes();
     
-    const seconds = date.getSeconds();
+    clock.innerText = `${hours < 10 ? `0${hours}` : hours}:${mins < 10 ? `0${mins}` : mins}`;
     
-    
-    if (mins < 10) {
-    clock.innerText = `${hours}:0${mins}`;}
-    else {
-        clock.innerText = `${hours}:${mins}`;
-    }
     
 };
 
