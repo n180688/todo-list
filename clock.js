@@ -12,9 +12,9 @@ function getTime() {
     const mins = date.getMinutes();
     
     clock.innerText = `${hours < 10 ? `0${hours}` : hours}:${mins < 10 ? `0${mins}` : mins}`;
-    
-    
 };
+
+
 
 function init() {
     getTime();
