@@ -1,40 +1,200 @@
-.hidden {
-    display: none;
-};
-
-html, body {
-   width: 100%;
-   height: 100%;
-   margin: 0;
-   padding: 0;
-}
-
-h1,h2,ul {
-    color: white;
-}
-
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-
-
-.bg_image {
-    position: fixed;
+body {
+    font-family: sans-serif; /* Или другой шрифт, который тебе нравится */
+    background-color: #f2f2f2; /* Светло-серый фон */
+    color: #333; /* Темно-серый текст */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Занимает весь экран по высоте */
+  }
+  
+  html {
     height: 100%;
-    width: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    animation: fadein 0.8s linear;
-}
+  }
+  
+  .content {
+    width: 80%; /* Занимает 80% ширины экрана */
+    max-width: 600px; /* Максимальная ширина контента */
+    background-color: #fff; /* Белый фон для контента */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: center; /* Центрирование текста внутри */
+  }
 
-.content {
-    background-color: rgba(0, 0, 0, 0.4);
-    height: 100%;
-}
+  
+  h1, h2 {
+    color: #555; /* Чуть более светлый цвет для заголовков */
+    margin-bottom: 15px;
+  }
+  
+  .js-clock h1 {
+    font-size: 2.5em;
+    font-weight: 300; /* Более тонкий шрифт */
+    margin-bottom: 0;
+  }
+
+  .js-todoForm input {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 70%;
+    margin-bottom: 15px;
+  }
+  
+  .js-todoForm input:focus {
+    outline: none;
+    border-color: #999;
+  }
+  
+  /* Общие стили списка */
+.js-todolist {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Стили для элемента списка (карточки задачи) */
+  .js-todolist li {
+    position: relative; /* Важно для позиционирования кнопки удаления */
+    padding: 12px 36px 12px 16px; /* Больше отступ слева и справа */
+    margin-bottom: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    word-break: break-word;
+    text-align: left;
+  }
+  
+  .js-todolist li:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Стили для чекбокса */
+  .js-todolist li input[type="checkbox"] {
+    margin-right: 10px; /* Отступ между чекбоксом и текстом */
+    appearance: none; /* Убираем стандартные стили чекбокса */
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none; /* Убираем обводку при фокусе */
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Псевдоэлемент для создания галочки */
+  .js-todolist li input[type="checkbox"]:checked::before {
+      content: '\2713'; /* Юникод символ галочки */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      color: #555;
+  }
+  
+  /* Стили при чекнутом чекбоксе */
+  .js-todolist li input[type="checkbox"]:checked + span {
+    text-decoration: line-through; /* Зачеркивание текста */
+    color: #aaa; /* Более светлый цвет текста */
+  }
+  
+  /* Стили для текста задачи */
+  .js-todolist li span {
+      flex-grow: 1; /* Занимает доступное пространство */
+      margin-right: 30px; /* Увеличенный отступ перед кнопкой удаления (чтобы учесть кнопку наверху) */
+  }
+  
+  /* Стили для кнопки удаления */
+  .js-todolist li button {
+    position: absolute;
+    top: 8px; /* Размещаем кнопку в верхнем правом углу */
+    right: 8px;
+    background-color: rgba(221, 221, 221, 0.5); /* Полупрозрачный фон */
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Круглая кнопка */
+    cursor: pointer;
+    font-size: 14px;
+    color: #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Убираем внутренние отступы */
+    line-height: 1; /* Убираем влияние межстрочного интервала на вертикальное выравнивание */
+  }
+  
+  .js-todolist li button:hover {
+    background-color: rgba(204, 204, 204, 0.5); /* Еще более прозрачный при наведении */
+  }
+  
+  /* Вариант с изменением цвета карточки при завершении */
+  .js-todolist li input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #aaa;
+  }
+  
+  .js-todolist li input[type="checkbox"]:checked ~ button { /* ~ -  "сестринский" селектор */
+      background-color: rgba(144, 238, 144, 0.3); /* Светло-зеленый фон для завершенных задач */
+  }
+  
+  /* Если нужно менять цвет самой карточки */
+  .js-todolist li input[type="checkbox"]:checked {
+      background-color: rgba(144, 238, 144, 0.1); /* Светло-зеленый фон для завершенных задач */
+  }
+
+  #deadlineInput {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-top: 8px; /* Отступ сверху */
+    margin-bottom: 15px;
+    width: 70%; /* Чтобы поле занимало такую же ширину, как и текстовое поле */
+    box-sizing: border-box; /* Чтобы padding не увеличивал общую ширину */
+  }
+  
+  #deadlineInput:focus {
+    outline: none;
+    border-color: #999;
+  }
+
+  .deadline {
+    font-size: 0.8em;
+    color: #777;
+    margin-left: 10px; /* Отступ от текста задачи */
+  }
+
+  body.dark-theme .sidebar {
+    background-color: #333; /* Темный фон для меню */
+    border-right: 1px solid #555; /* Темная граница справа */
+    box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1); /* Светлая тень */
+    color: #fff; /* Светлый цвет текста */
+  }
+  
+  body.dark-theme #categoryList li {
+    color: #fff;
+  }
+  
+  body.dark-theme #addCategoryButton {
+    background-color: #777;
+    color: #fff;
+  }
+  
+  body.dark-theme #addCategoryButton:hover {
+    background-color: #999;
+  }
+  body.dark-theme #toggleSidebar{
+    background-color: #777;
+    color: #fff;
+  }
+  
+  body.dark-theme #toggleSidebar:hover{
+    background-color: #999;
+  }

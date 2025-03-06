@@ -6,9 +6,32 @@
     
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="sidebar.css" >
+    <link rel="stylesheet" href="darkTheme.css" >
+    <link rel="stylesheet" href="modalWindow.css" >
   </head>
   <body> 
   
+    <div class="theme-switcher">
+      <input type="checkbox" id="theme-toggle">
+      <label for="theme-toggle"></label>
+    </div>
+
+    <div class="sidebar">
+      <button id="toggleSidebar">☰</button>
+      <div class="sidebar-content">
+        <h2>Категории</h2>
+        <ul id="categoryList">
+          <li data-category="all" class="active">Все</li>
+          <li data-category="today">Сегодня</li>
+        </ul>
+        <button id="addCategoryButton">Добавить категорию</button>
+        <input type="text" id="newCategoryInput" placeholder="Название категории" style="display: none;">
+        <button id="saveCategoryButton" style="display: none;">Сохранить</button>
+      </div>
+    </div>
+
+
 <div class="content">
 
   
@@ -16,25 +39,24 @@
     <h1>00:00</h1>
 </div>
 
-<form class= "js-form hidden">
-<input type="text" placeholder="Как вас зовут?">
-</form>
-
-<h2 class="js-greetings hidden"></h2>
-
-
-
 
 <h2>Список задач</h2>
 
-<form class="js-todoForm">
-    <input type="text" placeholder="Добавьте задачу на сегодня">
-</form>
+<button id="addTaskButton">Добавить новую задачу</button>
+
+<div id="taskModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Добавить задачу</h2>
+    <input type="text" id="modalTaskInput" placeholder="Текст задачи">
+    <input type="datetime-local" id="modalDeadlineInput">
+    <button id="modalAddButton" disabled>Добавить</button>
+  </div>
+</div>
+
+<ul class="js-todolist"></ul>
 
 <ul class="js-todolist">
-    
-    
-    <span class="js-weather"></span>
     
 </ul>
 
@@ -43,10 +65,9 @@
 
 
 <script src="clock.js"></script>
-<script src="greetings.js"></script>
 <script src="todolist.js"></script>
-<script src="background.js"></script>
-<script src="weather.js"></script>
+<script src="themeHandler.js"></script>
+<script src="sidebarHandler.js"></script>
   </body>
 </html>
 

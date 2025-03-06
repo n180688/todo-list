@@ -1,0 +1,92 @@
+/* Общие стили для переключателя темы */
+.theme-switcher {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 20px; /* Отступ от верха */
+    right: 20px; /* Отступ справа */
+    z-index: 1000; /* Чтобы переключатель был поверх всего */
+  }
+  
+  /* Скрываем чекбокс */
+  .theme-switcher input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  
+  /* Стили для лейбла (сам переключатель) */
+  .theme-switcher label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 25px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+  }
+  
+  /* Кружок внутри переключателя */
+  .theme-switcher label:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+  }
+  
+  /* Меняем положение кружка, когда чекбокс отмечен */
+  .theme-switcher input:checked + label:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+  
+  /* Меняем цвет фона, когда тема включена */
+  .theme-switcher input:checked + label {
+    background: #292929;
+  }
+  
+  /* Стили для ночной темы */
+  body.dark-theme {
+    background-color: #333;
+    color: #f2f2f2;
+  }
+  
+  body.dark-theme .content {
+    background-color: #444;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  }
+  
+  body.dark-theme h1,
+  body.dark-theme h2 {
+    color: #ddd;
+  }
+  
+  body.dark-theme .js-todolist li {
+      background-color: #555;
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  }
+  
+  body.dark-theme .js-todolist button {
+      background-color: #777;
+      color: #fff;
+  }
+  
+  body.dark-theme .js-todolist button:hover {
+      background-color: #999;
+  }
+  
+  body.dark-theme .js-todolist li input[type="checkbox"]:checked + span {
+      color: #888;
+  }
+  
+  body.dark-theme .theme-switcher input:checked + label {
+    background: #bbb;
+  }
+  
+  body.dark-theme .theme-switcher label:after {
+      background: #333;
+  }

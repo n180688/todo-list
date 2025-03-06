@@ -1,0 +1,92 @@
+/* Стили для кнопки "Добавить новую задачу" */
+#addTaskButton {
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #addTaskButton:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Стили для модального окна */
+  .modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное позиционирование */
+    z-index: 1; /* Поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%; /* На всю ширину */
+    height: 100%; /* На всю высоту */
+    overflow: auto; /* Включить прокрутку, если необходимо */
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон */
+  }
+  
+  /* Стили для контента модального окна */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ширина контента */
+    max-width: 600px;
+    border-radius: 5px;
+  }
+  
+  /* Стили для кнопки закрытия */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Стили для кнопки "Добавить" в модальном окне */
+  #modalAddButton {
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #modalAddButton:disabled {
+    background-color: #ccc; /* Серый цвет, если неактивна */
+    cursor: not-allowed;
+  }
+  
+  #modalAddButton:hover:enabled {
+      background-color: #3e8e41;
+  }
+  /* Стили для полей ввода в модальном окне */
+  #modalTaskInput,
+  #modalDeadlineInput {
+    width: 100%; /* Поля ввода занимают всю ширину контейнера */
+    padding: 10px; /* Внутренние отступы для комфортного ввода текста */
+    margin-bottom: 10px; /* Отступ снизу для разделения элементов */
+    border: 1px solid #ddd; /* Тонкая серая граница */
+    border-radius: 4px; /* Небольшое скругление углов */
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+    font-size: 16px; /* Читабельный размер шрифта */
+  }
+  
+  /* Стили для состояния фокуса полей ввода */
+  #modalTaskInput:focus,
+  #modalDeadlineInput:focus {
+    outline: none; /* Убираем стандартную обводку при фокусе */
+    border-color: #aaa; /* Подсвечиваем границу при фокусе */
+  }

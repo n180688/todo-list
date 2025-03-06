@@ -1,0 +1,117 @@
+/* Стили для бокового меню */
+.sidebar {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 0;
+    left: 0;
+    height: 100%; /* На всю высоту */
+    width: 250px; /* Ширина меню */
+    background-color: #f0f0f0;
+    overflow-x: hidden; /* Скрываем горизонтальную полосу прокрутки */
+    padding-top: 60px; /* Отступ сверху, чтобы контент не перекрывался фиксированным меню */
+    transition: 0.3s; /* Плавная анимация сворачивания/разворачивания */
+    z-index: 100; /* Чтобы меню было поверх всего остального */
+    background-color: #f0f0f0; /* Светлый фон */
+    border-right: 1px solid #ccc; /* Тонкая граница справа */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Тень для отделения от контента */
+  }
+  
+/* Стили для кнопки сворачивания/разворачивания */
+#toggleSidebar {
+  position: absolute; /* Важно: Абсолютное позиционирование */
+  top: 10px;
+  left: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 20px;
+  z-index: 101; /* Чтобы кнопка была поверх всего */
+}
+
+/* Стили для кнопки, когда боковое меню свернуто */
+.sidebar.collapsed + .main-content #toggleSidebar {
+left: 10px; /* Размещаем кнопку слева */
+}
+
+  /* Стили для свернутого меню */
+  .sidebar.collapsed {
+    width: 0; /* Ширина 0, чтобы скрыть меню */
+  }
+  
+  .sidebar.collapsed .sidebar-content {
+    display: none; /* Скрываем контент свернутого меню */
+  }
+  
+  /* Стили для контента бокового меню */
+  .sidebar-content {
+    padding: 20px;
+  }
+  
+  /* Стили для списка категорий */
+  #categoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #categoryList li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+  }
+  
+  #categoryList li:hover {
+    background-color: #ddd;
+  }
+  
+  #categoryList li.active {
+    background-color: #ccc;
+    font-weight: bold;
+  }
+  
+  /* Стили для кнопки "Добавить категорию" */
+  #addCategoryButton {
+    background-color: #555;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  #addCategoryButton:hover {
+    background-color: #333;
+  }
+  
+  /* Стили для поля ввода названия категории */
+  #newCategoryInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Стили для кнопки "Сохранить" */
+  #saveCategoryButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  #saveCategoryButton:hover {
+    background-color: #3e8e41;
+  }
+  
+  
